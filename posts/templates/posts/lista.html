@@ -1,0 +1,18 @@
+{%load static%}
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="{%static 'estilos.css'%}">
+</head>
+<body>
+<h1>Lista de posts</h1>
+<a href="{%url 'nuevo'%}">Crear un post nuevo</a>
+
+{%for post in posts%}
+<p>
+	<a href="{%url 'detalle' post.id%}">
+		{{post.titulo}}
+	</a>
+</p>
+{%endfor%}
+</body>
+</html>
