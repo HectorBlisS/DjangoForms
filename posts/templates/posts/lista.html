@@ -5,6 +5,16 @@
 </head>
 <body>
 <h1>Lista de posts</h1>
+{%if request.user.is_authenticated%}
+<h2>Hola pinche {{request.user.username}}</h2>
+<a href="{%url 'logout'%}">Cerrar Sesión</a>
+{%else%}
+<a href="{%url 'login'%}">Inicia sesión</a>
+{%endif%}
+
+
+
+
 <a href="{%url 'nuevo'%}">Crear un post nuevo</a>
 
 {%for post in posts%}
