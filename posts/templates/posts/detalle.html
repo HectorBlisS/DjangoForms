@@ -2,3 +2,15 @@
 <h2>{{post.titulo}}</h2>
 <p>{{post.cuerpo}}</p>
 <span>{{post.autor}}</span>
+<h2>Comentarios:</h2>
+
+<form action="." method="post">
+{%csrf_token%}
+{{form.as_p}}
+<input type="submit">
+</form>
+
+{%for comentario in post.comentarios.all%}
+<p>{{comentario.fecha}} -- {{comentario.autor}}</p>
+<p>{{comentario.cuerpo}}</p>
+{%endfor%}

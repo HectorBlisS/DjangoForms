@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views.generic import View
-from .models import Post
-from .forms import PostForm
+from .models import Post, Comentario
+from .forms import PostForm, ComentForm
 
 
 class Lista(View):
@@ -10,14 +10,40 @@ class Lista(View):
 		return render(request,'posts/lista.html',{'posts':posts})
 
 
+# class Detalle(View):
+# 	def get(self,request,id):
+# 		post = Post.objects.get(id=id)
+
+# 		comentarios = Comentario.objects.all().filter(post=post)
+
+# 		template_name = 'posts/detalle.html'
+# 		context = {
+# 			'post':post,
+# 			'comentarios':comentarios
+# 		}
+# 		return render(request,template_name,context)
+
 class Detalle(View):
 	def get(self,request,id):
 		post = Post.objects.get(id=id)
 		template_name = 'posts/detalle.html'
+		form = ComentForm()
 		context = {
-			'post':post
+			'post':post,
+			'form':form
 		}
 		return render(request,template_name,context)
+
+	def post(self,request,id):
+		post = Post.objects.get(id=id)
+		form = ComentForm(request.POST)
+		if form.is_valid():
+			nuevo_comen = form.save(commit=False)
+			nuevo_comen.autor = request.user
+			nuevo_comen.post = post
+			nuevo_comen.save()
+			return redirect('detalle',id=id)
+		return redirect('lista')
 
 class NuevoPost(View):
 	def get(self,request):
