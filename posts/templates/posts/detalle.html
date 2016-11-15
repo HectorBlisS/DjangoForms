@@ -1,4 +1,13 @@
 <h1>El detalle del post</h1>
+
+<form method="post" action="{%url 'mail'%}">
+	{%csrf_token%}
+	<input name="amigo" type="text" placeholder=" a quien se lo compartirás?">
+	<input name="link" type="hidden" value="http://localhost:8000/{{post.id}}/">
+	<input type="submit" value="Enviar correo">
+</form>
+
+
 <h2>{{post.titulo}}</h2>
 <p>{{post.cuerpo}}</p>
 <span>{{post.autor}}</span>

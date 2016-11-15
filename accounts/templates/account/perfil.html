@@ -1,0 +1,20 @@
+<html>
+<head>
+	<title>El perfil</title>
+</head>
+<body>
+
+	<h1>Bienvenido {{request.user.username}}</h1>
+
+	<h2>Tus datos:</h2>
+	<h4>{{request.user.email}}</h4>
+	<h4>{{request.user.profile.empresa}}</h4>
+	<h4>{{request.user.profile.giro}}</h4>
+	<a href="{{request.user.profile.pagina}}">
+		{{request.user.profile.pagina}}
+	</a>
+	<img width="100px" src="http://graph.facebook.com/10211149532552100/picture?type=large">
+
+
+</body>
+</html>

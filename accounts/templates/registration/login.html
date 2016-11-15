@@ -1,0 +1,14 @@
+<h1>Inicio de sesión</h1>
+
+<form action="{%url 'login'%}" method="post">
+{%csrf_token%}
+{{form.as_p}}
+<input type="submit" value="Iniciar Sesión">
+</form>
+<h3>Inicia sesión con tus redes sociales</h3>
+<a href="{%url 'social:begin' 'facebook'%}">
+<button style="background:blue;color:white;border:none">Facebook</button>
+</a>
+<br>
+
+<a href="{%url 'registration'%}">No tienes cuenta? pos creala aquí</a>

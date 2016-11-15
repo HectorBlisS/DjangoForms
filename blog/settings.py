@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'posts',
-    'account',
+    'accounts',
+    'social.apps.django_app.default'
 ]
 
 MIDDLEWARE = [
@@ -64,6 +65,9 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                #Para login con redes
+                'social.apps.django_app.context_processors.backends',
+                'social.apps.django_app.context_processors.login_redirect',
             ],
         },
     },
@@ -123,3 +127,33 @@ STATIC_URL = '/static/'
 
 LOGIN_REDIRECT_URL = 'lista'
 LOGOUT_REDIRECT_URL = 'lista'
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = '587'
+EMAIL_HOST_USER = 'rotcehcm@gmail.com'
+EMAIL_HOST_PASSWORD = '17041987'
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = False
+
+# Backend authentication
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    # 'account.authentication.EmailAuthBackend',
+    'social.backends.facebook.Facebook2OAuth2',
+    # 'social.backends.twitter.TwitterOAuth',
+    # 'social.backends.google.GoogleOAuth2',
+
+    )
+
+#Llaves para facebook
+SOCIAL_AUTH_FACEBOOK_KEY = '1154292751322811'
+SOCIAL_AUTH_FACEBOOK_SECRET = '1ee94180abcc9fea17e93cb751edd439'
+
+SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
+SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
+  'locale': 'ru_RU',
+  'fields': 'id, name, email, age_range'
+}

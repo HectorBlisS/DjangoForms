@@ -1,0 +1,26 @@
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		.errorlist li{
+			background: red;
+			color:white;
+			font-size: 4rem;
+			width: 100%;
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+
+
+	<h1>Crea tu cuenta de usuario chirgo</h1>
+	<form actions="." method="post">
+		{%csrf_token%}
+		{{form.as_p}}
+		<input type="submit">
+	</form>
+
+</body>
+</html>
+

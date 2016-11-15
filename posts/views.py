@@ -3,6 +3,7 @@ from django.views.generic import View
 from .models import Post, Comentario
 from .forms import PostForm, ComentForm
 
+from .mailing import template_email
 
 class Lista(View):
 	def get(self,request):
@@ -66,3 +67,33 @@ class NuevoPost(View):
 		'form':form
 		}
 		return render(request,template_name,context)
+
+
+
+
+class Mail(View):
+	def post(self,request):
+		link = request.POST.get('link')
+		amigo = request.POST.get('amigo')
+		dic = {
+			'titulo':"Titulo de Prueba",
+			'mensaje':link,
+			'asunto':"el asunto",
+			'para':["contacto@fixter.org",amigo]
+		}
+		template_email(dic)
+		return redirect('lista')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
