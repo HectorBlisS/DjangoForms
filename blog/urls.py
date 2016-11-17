@@ -10,6 +10,7 @@ from posts.api import urls as apiURL
 
 urlpatterns = [
     url(r'^api/',include(apiURL)),
+    
 	url(r'^accounts/',include(accountURL)),
     url(r'^admin/', admin.site.urls),
     url(r'^',include(postsURLs)),
