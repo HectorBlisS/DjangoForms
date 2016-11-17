@@ -1,0 +1,16 @@
+{%extends 'base.html'%}
+{%load static%}
+
+
+
+{%block content%}
+
+<ul>
+	{%for p in productos%}
+	<li>{{p.nombre}} - <img width="100px" src="{{p.img.url}}"></li>
+	{%empty%}
+	<h2>No hay productos</h2>
+	{%endfor%}
+</ul>
+
+{%endblock content%}

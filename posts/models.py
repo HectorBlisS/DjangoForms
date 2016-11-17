@@ -8,6 +8,7 @@ class Post(models.Model):
 	autor = models.ForeignKey(User,related_name='posts')
 	fecha = models.DateTimeField(auto_now=True)
 	publicado = models.BooleanField(default=False)
+	img = models.ImageField(blank=True,null=True)
 
 	def __str__(self):
 		return self.titulo

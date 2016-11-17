@@ -5,6 +5,7 @@
 </head>
 <body>
 <h1>Lista de posts</h1>
+<a href="{%url 'tienda'%}">Compra los productos oficiales</a>
 {%if request.user.is_authenticated%}
 <img width="100px" src="{{request.user.profile.img.url}}">
 <h2>Hola pinche {{request.user.username}}</h2>

@@ -8,8 +8,8 @@ from rest_framework.permissions import IsAuthenticated
 class PostListView(generics.ListCreateAPIView):
 	queryset = Post.objects.all()
 	serializer_class = PostSerializer
-	authentication_classes = (TokenAuthentication,)
-	permission_classes = (IsAuthenticated,)
+	# authentication_classes = (TokenAuthentication,)
+	# permission_classes = (IsAuthenticated,)
 
 
 class PostDetailView(generics.RetrieveAPIView):
